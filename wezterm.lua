@@ -45,12 +45,6 @@ wezterm.on("restore_session", function(window) session_manager.restore_state(win
 
 -- This is where you actually apply your config choices
 
--- For example, changing the color scheme:
-
--- Define the HaX0R_R3D color scheme
-
--- names from --https://colorkit.co/color/{colorCode}/
-config.color_scheme                 = 'ow-the-edge'
 -- from https://es.pixilart.com/palettes/shadow-the-hedgehog-color-80734
 
 local color_reference               = {
@@ -67,11 +61,11 @@ local color_reference               = {
 
   -- Dark browns/blacks
   brown_dark_1 = "#251C1B",
-  black_dark_1 = "#060403",
+  black_metal = "#060403",
   brown_dark_2 = "#241B1B",
   black_dark_2 = "#050303",
   brown_dark_3 = "#241710",
-  black_dark_3 = "#240A09",
+  italian_roast = "#240A09",
   brown_dark_4 = "#240A09",
 
   -- Reds
@@ -140,15 +134,50 @@ local color_reference               = {
   brown_light_11 = "#825C5C",
   brown_light_12 = "#634646",
 }
+
+-- names from --https://colorkit.co/color/{colorCode}/
 -- https://www.color-hex.com/color-palette/1048072
 local red_pegasus                   = "#DC0000"
 local butterscotch_cake             = "#f6c883"
 local beloved_sunflower             = "#ffb528"
 local inca_yellow                   = "#FFD200"
+-- https://www.color-hex.com/color-palette/1025643
+local bluetiful                     = "#3061e3"
+local resplendent_growth            = "#319938"
+
+-- https://www.spriters-resource.com/resources/sheets/10/10045.png?updated=1604988056
+--local  = ""
+local doctor                        = "#F8F8F8"
+local tangled_web                   = "#b0b0b0"
+local paris_paving                  = "#707070"
+local lead                          = "#202020"
+local kimono                        = "#7088b8"
+local intergalactic                 = "#485070"
+local purple_noir                   = "#303058"
+local pastel_yellow                 = "#f8f898"
+local pani_puri                     = "#f8a850"
+local warm_brown                    = "#985010"
+local red_stop                      = "#f82020"
+local cacodemon_red                 = "#a00000"
+local banana_propaganda             = "#f8d800"
+local atomic_orange                 = "#f88808"
+local pimentPiquant                 = "#d02000"
+
+local hint_of_red                   = "#f8e0e0"
+local death_by_chocolate            = "#604040"
+local plum                          = "#d8a0e0"
+local lusty_lavendar                = "#9060b0"
+local yippie_ya_yellow              = "#f8f8a0"
+local dragon_ball                   = "#f8a020"
+local coral_red                     = "#f84040"
+local fire_engine                   = "#f80000"
+local delayed_yellow                = "#f8f800"
+local sunny_yellow                  = "#f8f810"
+local metroid_red                   = "#f84000"
 
 -- original shades
 local red_alert                     = "#FF1010"
-local italian_roast                 = "#240a09"
+local dark_matter                   = "#120303"
 local federation_of_love            = "#b00d0d"
 local deviled_eggs                  = "#FDD285"
 local neon_boneyard                 = "#ebc1ff"
@@ -161,10 +190,204 @@ local cherry_soda                   = "#dc0037"
 local finder                        = "#00FF00"
 --local finder = "#00FF00"
 
+config.color_scheme                 = 'ow-the-edge'
 config.color_schemes                = {
   ['ow-the-edge'] = {
+    -- The default text color
+    --[[
+    kak text
+    ]]
+    foreground = inca_yellow,
+    -- The default background color
+    background = dark_matter,
+
+    -- Overrides the cell background color when the current cell is occupied by the
+    -- cursor and the cursor style is set to Block
+    --[[
+    excludes kak's cursor
+    ]]
+    cursor_bg = lead,
+    -- Overrides the text color when the current cell is occupied by the cursor
+    --[[
+    excludes kak's cursor
+    ]]
+    cursor_fg = butterscotch_cake,
+    -- Specifies the border color of the cursor when the cursor style is set to Block,
+    -- or the color of the vertical or horizontal bar when the cursor style is set to
+    -- Bar or Underline.
+    cursor_border = lead,
+
+    -- the foreground color of selected text
+    selection_fg = plum,
+    -- the background color of selected text
+    selection_bg = lead,
+
+    -- The color of the scrollbar "thumb"; the portion that represents the current viewport
+    scrollbar_thumb = '#222222',
+
+    -- The color of the split lines between panes
+    split = '#444444',
+
+    ansi = {
+      --[[
+      base background highlight
+      ]]
+      'black', -- terminal:black
+      --[[
+      error text
+      kak colon
+      ]]
+      bluetiful, -- terminal:red
+      --[[
+      links
+      tmux status
+      time seperators
+      highlight
+      ]]
+      red_alert, -- terminal:green
+      --[[
+      kak assistant bg
+      ]]
+      peri_peri, -- terminal:yello
+      --[[
+      document selection
+      text inside highlight
+      table ids
+      ]]
+      deviled_eggs, -- terminal:blue
+      --[[
+      right prompt
+      ]]
+      falu_red, -- terminal:magenta
+      --[[
+      external commands
+      comments
+      directories
+      ]]
+      cherry_soda, -- terminal:cyan
+      --[[
+      kak command highlight
+      table lines
+      ]]
+      federation_of_love -- terminal:white
+    },
+
+    brights = {
+      --[[
+      autocomplete suggestion
+      ]]
+      beloved_sunflower, -- terminal:brightBlack
+      red_pegasus,       -- terminal:brightRed
+      --[[
+      left prompt
+      arguments
+      tab selection
+      table ids
+      ]]
+      inca_yellow, -- terminal:brightGreen
+      red_alert,   -- terminal:brightYellow
+      --[[
+      option
+      ]]
+      red_pegasus, -- terminal:brightBlue
+      --[[
+      error
+      detail text
+      ]]
+      resplendent_growth, -- terminal:brightMagenta
+      --[[
+      internal commands
+      ]]
+      red_pegasus, -- terminal:brightCyan
+      finder,      -- terminal:brightWhite
+    },
+
+    -- Arbitrary colors of the palette in the range from 16 to 255
+    indexed = { [136] = '#af8700' },
+
+    -- Since: 20220319-142410-0fcdea07
+    -- When the IME, a dead key or a leader key are being processed and are effectively
+    -- holding input pending the result of input composition, change the cursor
+    -- to this color to give a visual cue about the compose state.
+    compose_cursor = 'orange',
+
+    -- Colors for copy_mode and quick_select
+    -- available since: 20220807-113146-c2fee766
+    -- In copy_mode, the color of the active text is:
+    -- 1. copy_mode_active_highlight_* if additional text was selected using the mouse
+    -- 2. selection_* otherwise
+    copy_mode_active_highlight_bg = { Color = '#000000' },
+    -- use `AnsiColor` to specify one of the ansi color palette values
+    -- (index 0-15) using one of the names "Black", "Maroon", "Green",
+    --  "Olive", "Navy", "Purple", "Teal", "Silver", "Grey", "Red", "Lime",
+    -- "Yellow", "Blue", "Fuchsia", "Aqua" or "White".
+    copy_mode_active_highlight_fg = { AnsiColor = 'Black' },
+    copy_mode_inactive_highlight_bg = { Color = '#52ad70' },
+    copy_mode_inactive_highlight_fg = { AnsiColor = 'White' },
+
+    quick_select_label_bg = { Color = 'peru' },
+    quick_select_label_fg = { Color = '#ffffff' },
+    quick_select_match_bg = { AnsiColor = 'Navy' },
+    quick_select_match_fg = { Color = '#ffffff' },
+  },
+  ['ow-the-edge-old'] = {
+    foreground = inca_yellow,      -- terminal:foreground --editor text
+    background = dark_matter,      -- terminal:background --obvious
+    cursor_bg = lead,              -- terminal:cursor --excludes editor
+    cursor_fg = butterscotch_cake, -- terminal:cursorAccent --excludes editor
+    selection_bg = lead,           -- terminal:selection
+    selection_fg = plum,           -- Assumed, not provided in the original
+
+    ansi = {
+      yippie_ya_yellow,   -- terminal:black --tmux status text, network drive text, kak clippy text
+      bluetiful,          -- terminal:red --error text, kak colon
+      red_alert,          -- terminal:green --links, tmux status, time seperators, highlight
+      peri_peri,          -- terminal:yellow --kak clippy bg
+      deviled_eggs,       -- terminal:blue --document selection, text inside highlight,  sel in kak
+      falu_red,           -- terminal:magenta --right prompt
+      cherry_soda,        -- terminal:cyan --external commands, comments, directories
+      federation_of_love, -- terminal:white --cursor, kak command highlight, table lines
+    },
+
+    brights = {
+      beloved_sunflower,  -- terminal:brightBlack --autocomplete suggestion
+      red_pegasus,        -- terminal:brightRed
+      inca_yellow,        -- terminal:brightGreen --left prompt, arguments, tab selection, table ids
+      red_alert,          -- rterminal:brightYellow
+      red_pegasus,        -- terminal:brightBlue --option
+      resplendent_growth, -- terminal:brightMagenta --error detail text
+      red_pegasus,        -- terminal:brightCyan --internal commands
+      finder,             -- terminal:brightWhite
+    },
+
+    -- Additional colors (if needed for UI elements)
+    tab_bar = {
+      background = dwarf_fortress, -- main-dark
+      active_tab = {
+        bg_color = "#08c",         -- primary
+        fg_color = "#fff",         -- text-light
+      },
+      inactive_tab = {
+        bg_color = "#2E3338", -- main-light
+        fg_color = "#888",    -- text-dark
+      },
+      inactive_tab_hover = {
+        bg_color = "#2E3338", -- main-light
+        fg_color = "#ddd",    -- text
+      },
+      new_tab = {
+        bg_color = dwarf_fortress, -- main-dark
+        fg_color = "#ddd",         -- text
+      },
+      new_tab_hover = {
+        bg_color = "#2E3338", -- main-light
+        fg_color = "#fff",    -- text-light
+      },
+    }
+  },
+  ['HaX0R_R3D5'] = {
     foreground = inca_yellow,         -- terminal:foreground --editor text
-    background = italian_roast,       -- terminal:background --obvious
+    background = dark_matter,         -- terminal:background --obvious
     cursor_bg = federation_of_love,   -- terminal:cursor --excludes editor
     cursor_fg = butterscotch_cake,    -- terminal:cursorAccent --excludes editor
     selection_bg = beloved_sunflower, -- terminal:selection
@@ -173,7 +396,7 @@ config.color_schemes                = {
     ansi = {
       dwarf_fortress,     -- terminal:black --network drive text, kak clippy text
       bluerocratic,       -- terminal:red --error text
-      falu_red,           -- terminal:green --highlight
+      red_alert,          -- terminal:green --links, tmux status, time seperators, highlight
       peri_peri,          -- terminal:yellow --kak clippy bg
       deviled_eggs,       -- terminal:blue --text inside highlight, x sel in kak
       falu_red,           -- terminal:magenta --right prompt
@@ -182,14 +405,14 @@ config.color_schemes                = {
     },
 
     brights = {
-      beloved_sunflower, -- terminal:brightBlack --autocomplete suggestion
-      red_pegasus,       -- terminal:brightRed
-      inca_yellow,       -- terminal:brightGreen --left prompt, arguments, tab selection, table ids
-      red_alert,         -- rterminal:brightYellow
-      red_pegasus,       -- terminal:brightBlue --option
-      teal_me_no_lies,   -- terminal:brightMagenta --error detail text
-      red_pegasus,       -- terminal:brightCyan --internal commands
-      "#fefefe",         -- terminal:brightWhite
+      beloved_sunflower,  -- terminal:brightBlack --autocomplete suggestion
+      red_pegasus,        -- terminal:brightRed
+      inca_yellow,        -- terminal:brightGreen --left prompt, arguments, tab selection, table ids
+      red_alert,          -- rterminal:brightYellow
+      red_pegasus,        -- terminal:brightBlue --option
+      resplendent_growth, -- terminal:brightMagenta --error detail text
+      red_pegasus,        -- terminal:brightCyan --internal commands
+      "#fefefe",          -- terminal:brightWhite
     },
 
     -- Additional colors (if needed for UI elements)
@@ -295,9 +518,10 @@ config.colors                       = {
 
 --config.disable_default_mouse_bindings = true
 config.keys                         = {
-  { key = "S", mods = "LEADER", action = act { EmitEvent = "save_session" } },
-  { key = "L", mods = "LEADER", action = act { EmitEvent = "load_session" } },
-  { key = "R", mods = "LEADER", action = act { EmitEvent = "restore_session" } },
+  { key = 'Backspace', mods = 'CTRL',   action = act.SendKey { key = 'w', mods = 'CTRL' } }, -- https://github.com/wezterm/wezterm/discussions/3983#discussioncomment-6981806
+  { key = "S",         mods = "LEADER", action = act { EmitEvent = "save_session" } },
+  { key = "L",         mods = "LEADER", action = act { EmitEvent = "load_session" } },
+  { key = "R",         mods = "LEADER", action = act { EmitEvent = "restore_session" } },
 
   -- Switch to the default workspace
   {
