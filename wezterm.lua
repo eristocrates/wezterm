@@ -218,12 +218,12 @@ config.color_schemes                = {
     cursor_border = paris_paving,
 
     -- the foreground color of selected text
-    selection_fg = plum,
+    selection_fg = hint_of_red,
     -- the background color of selected text
-    selection_bg = paris_paving,
+    selection_bg = lusty_lavendar,
 
     -- The color of the scrollbar "thumb"; the portion that represents the current viewport
-    scrollbar_thumb = lusty_lavendar,
+    scrollbar_thumb = paris_paving,
 
     -- The color of the split lines between panes
     split = tangled_web,
@@ -244,11 +244,11 @@ config.color_schemes                = {
       time seperators
       highlight
       ]]
-      red_alert, -- terminal:green
+      fire_engine, -- terminal:green
       --[[
       kak assistant bg
       ]]
-      peri_peri, -- terminal:yello
+      coral_red, -- terminal:yello
       --[[
       document selection
       text inside highlight
@@ -256,15 +256,17 @@ config.color_schemes                = {
       ]]
       deviled_eggs, -- terminal:blue
       --[[
+      variables
+      modified time
       right prompt
       ]]
-      falu_red, -- terminal:magenta
+      metroid_red, -- terminal:magenta
       --[[
       external commands
       comments
       directories
       ]]
-      cherry_soda, -- terminal:cyan
+      pimentPiquant, -- terminal:cyan
       --[[
       kak command highlight
       table lines
@@ -327,6 +329,7 @@ config.color_schemes                = {
 
     quick_select_label_bg = { Color = cacodemon_red },
     quick_select_label_fg = { Color = doctor },
+
     quick_select_match_bg = { Color = dragon_ball },
     quick_select_match_fg = { Color = hint_of_red },
   },
